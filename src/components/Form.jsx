@@ -33,23 +33,7 @@ class Form extends Component {
     event.preventDefault();
     this.props.onSubmit(this.state);
     this.reset();
-    // console.log(this.state);
-    // const { contacts } = this.props;
-
-    // const { name, number } = event.currentTarget;
-
-    // let addedContact = {
-    //   name: name.value,
-    //   number: number.value,
-    //   id: nanoid(),
-    // };
-
-    // this.props.onSubmit(addedContact);
   };
-
-  // addItem() {
-  //   this.setState(this.state.contacts.push());
-  // }
 
   render() {
     return (
