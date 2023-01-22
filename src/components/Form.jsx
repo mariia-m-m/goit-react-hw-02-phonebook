@@ -10,7 +10,13 @@ class Form extends Component {
 
   onChange = event => {
     const { name, value } = event.currentTarget;
+    const { contacts } = this.props;
     this.setState({ [name]: value });
+    contacts.map(({ name, number }) => {
+      if (value === name) {
+        alert(`${name} is already in contacts`);
+      }
+    });
   };
 
   handleSubmit = event => {
