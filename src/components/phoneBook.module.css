@@ -1,0 +1,75 @@
+.section {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+}
+.input {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: whitesmoke;
+  width: 250px;
+  height: 30px;
+  border-radius: 5px;
+  border: 3px solid lightseagreen;
+  box-shadow: 4px 4px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  padding: 10px;
+  color: black;
+  outline: none;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.input:focus {
+  background-color: rgb(232, 252, 232);
+  border: 3px solid green;
+}
+
+.block {
+  border: 1px solid gray;
+  border-radius: 5px;
+  width: 50%;
+  height: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 60px;
+  background-color: blanchedalmond;
+  box-shadow: 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 20px;
+}
+
+.blockContact {
+  border: 1px solid transparent;
+  border-radius: 5px;
+  width: 50%;
+  height: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 16px;
+  color: darkgreen;
+  text-align: center;
+}
+
+.name {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: brown;
+  text-align: left;
+}
+.button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  background-color: aquamarine;
+  border: 1px solid green;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
