@@ -1,7 +1,7 @@
 import styles from '../components/phoneBook.module.css';
 import { nanoid } from 'nanoid';
 
-const Contacts = ({ contacts, filter }) => {
+const Contacts = ({ contacts, filter, onDelete }) => {
   let filtered = contacts;
   if (filter.toLowerCase()) {
     filtered = contacts.filter(contact =>
@@ -11,6 +11,7 @@ const Contacts = ({ contacts, filter }) => {
       <li key={nanoid(3)}>
         <p className={styles.name}>{name}</p>
         <p className={styles.name}>{number}</p>
+        <button onClick={() => onDelete({ name })}>Delete</button>
       </li>
     ));
 

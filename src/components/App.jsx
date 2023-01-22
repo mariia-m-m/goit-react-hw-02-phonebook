@@ -25,19 +25,14 @@ export class App extends Component {
     this.setState({ filter: value });
   };
 
-  onFilter() {
-    const { contacts, filter } = this.state;
-    this.state.contacts.map(({ name, number }) => {
-      if ((filter = name)) {
-        return (
-          <li key={nanoid(3)}>
-            <p className={styles.name}>{name}</p>
-            <p className={styles.name}>{number}</p>
-          </li>
-        );
-      }
-    });
-  }
+  onDelete = name => {
+    const { contacts } = this.state;
+    // for (let i = 0; i < arr.length; i++) { // пройтись по все элементам массива
+    // if (typeof(arr[i]) === 'object' && arr[i].value === 'b') { // если элемент массива является объектом, и у этого объекта поле value равняется 'b' и является строкой
+    //   arr.splice(i, 1); // удалить элемент из массива
+    var joined = this.state.contacts.splice(name);
+    this.setState({ contacts: joined });
+  };
 
   render() {
     return (
@@ -63,7 +58,11 @@ export class App extends Component {
               required
             />
           </>
-          <Contacts contacts={this.state.contacts} filter={this.state.filter} />
+          <Contacts
+            contacts={this.state.contacts}
+            filter={this.state.filter}
+            onDelete={this.onDelete}
+          />
         </div>
       </div>
     );
