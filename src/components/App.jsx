@@ -15,6 +15,25 @@ export class App extends Component {
     this.setState({ contacts: joined });
   };
 
+  onChange = event => {
+    const { value } = event.currentTarget;
+    this.setState({ filter: value });
+  };
+
+  onFilter() {
+    const { contacts, filter } = this.state;
+    this.state.contacts.map(({ name, number }) => {
+      if ((filter = name)) {
+        return (
+          <li key={nanoid(3)}>
+            <p className={styles.name}>{name}</p>
+            <p className={styles.name}>{number}</p>
+          </li>
+        );
+      }
+    });
+  }
+
   render() {
     return (
       <div className={styles.section}>
@@ -25,7 +44,21 @@ export class App extends Component {
         />
 
         <div className={styles.blockContact}>
-          <Contacts contacts={this.state.contacts} />
+          <h2 className={styles.title}>Contacts</h2>
+          <>
+            <p className={styles.name}>Find contacts by name</p>
+            <input
+              value={this.state.value}
+              onChange={this.onChange}
+              className={styles.input}
+              type="text"
+              name="filter"
+              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+              required
+            />
+          </>
+          <Contacts contacts={this.state.contacts} filter={this.state.filter} />
         </div>
       </div>
     );
