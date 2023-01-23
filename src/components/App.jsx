@@ -1,6 +1,5 @@
 import styles from '../components/phoneBook.module.css';
 import { Component } from 'react';
-import { nanoid } from 'nanoid';
 import Form from './Form';
 import Contacts from './Contacts';
 
