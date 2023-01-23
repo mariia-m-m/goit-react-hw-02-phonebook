@@ -1,6 +1,5 @@
 import styles from '../components/phoneBook.module.css';
 import { Component } from 'react';
-import { nanoid } from 'nanoid';
 
 class Form extends Component {
   state = {
@@ -12,7 +11,7 @@ class Form extends Component {
     const { name, value } = event.currentTarget;
     const { contacts } = this.props;
     this.setState({ [name]: value });
-    contacts.map(({ name, number }) => {
+    contacts.map(({ name }) => {
       if (value === name) {
         alert(`${name} is already in contacts`);
       }
@@ -27,12 +26,6 @@ class Form extends Component {
 
   reset = () => {
     this.setState({ contacts: [], name: '', number: '' });
-  };
-
-  handleSubmit = event => {
-    event.preventDefault();
-    this.props.onSubmit(this.state);
-    this.reset();
   };
 
   render() {
