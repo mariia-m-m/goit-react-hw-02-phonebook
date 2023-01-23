@@ -13,7 +13,7 @@ const Contacts = ({ contacts, filter, onDelete }) => {
         <li key={id}>
           <p className={styles.name}>{name}</p>
           <p className={styles.name}>{number}</p>
-          <button onClick={() => onDelete({ name })}>Delete</button>
+          <button onClick={() => onDelete({ id })}>Delete</button>
         </li>
       );
     });
