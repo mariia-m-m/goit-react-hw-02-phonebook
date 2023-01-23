@@ -7,16 +7,16 @@ class Form extends Component {
     number: '',
   };
 
-  onChange = event => {
-    const { name, value } = event.currentTarget;
-    const { contacts } = this.props;
-    this.setState({ [name]: value });
-    contacts.map(({ name }) => {
-      if (value === name) {
-        alert(`${name} is already in contacts`);
-      }
-    });
-  };
+  // onChange = event => {
+  //   const { name, value } = event.currentTarget;
+  //   const { contacts } = this.props;
+  //   this.setState({ [name]: value });
+  //   contacts.map(({ name }) => {
+  //     if (value === name) {
+  //       alert(`${name} is already in contacts`);
+  //     }
+  //   });
+  // };
 
   handleSubmit = event => {
     event.preventDefault();
