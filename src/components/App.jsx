@@ -47,6 +47,7 @@ export class App extends Component {
               value={this.state.value}
               onChange={this.onChange}
               className={styles.input}
+              placeholder="Name of contact"
               type="text"
               name="filter"
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"

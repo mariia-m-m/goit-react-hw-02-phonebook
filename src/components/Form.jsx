@@ -38,6 +38,7 @@ class Form extends Component {
               value={this.state.name}
               onChange={this.onChange}
               className={styles.input}
+              placeholder="Name of contact"
               id="get-name"
               type="text"
               name="name"
@@ -52,6 +53,7 @@ class Form extends Component {
               id="get-number"
               onChange={this.onChange}
               className={styles.input}
+              placeholder="Number of contact"
               value={this.state.number}
               type="tel"
               name="number"
