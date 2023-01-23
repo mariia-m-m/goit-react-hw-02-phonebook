@@ -4,6 +4,8 @@ import { nanoid } from 'nanoid';
 import Form from './Form';
 import Contacts from './Contacts';
 
+const id = nanoid(3);
+
 export class App extends Component {
   state = {
     contacts: [

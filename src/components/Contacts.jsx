@@ -10,7 +10,7 @@ const Contacts = ({ contacts, filter, onDelete }) => {
     const elements = filtered.map(({ name, number }) => {
       const id = nanoid(3);
       return (
-        <li key={name}>
+        <li key={id}>
           <p className={styles.name}>{name}</p>
           <p className={styles.name}>{number}</p>
           <button onClick={() => onDelete({ name })}>Delete</button>
