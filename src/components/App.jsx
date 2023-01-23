@@ -26,12 +26,9 @@ export class App extends Component {
   };
 
   onDelete = name => {
-    const { contacts } = this.state;
-    // for (let i = 0; i < arr.length; i++) { // пройтись по все элементам массива
-    // if (typeof(arr[i]) === 'object' && arr[i].value === 'b') { // если элемент массива является объектом, и у этого объекта поле value равняется 'b' и является строкой
-    //   arr.splice(i, 1); // удалить элемент из массива
-    var joined = this.state.contacts.splice(name);
-    this.setState({ contacts: joined });
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(user => user.name !== name),
+    }));
   };
 
   render() {

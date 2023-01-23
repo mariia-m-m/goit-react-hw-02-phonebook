@@ -7,13 +7,16 @@ const Contacts = ({ contacts, filter, onDelete }) => {
     filtered = contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter)
     );
-    const elements = filtered.map(({ name, number }) => (
-      <li key={nanoid(3)}>
-        <p className={styles.name}>{name}</p>
-        <p className={styles.name}>{number}</p>
-        <button onClick={() => onDelete({ name })}>Delete</button>
-      </li>
-    ));
+    const elements = filtered.map(({ name, number }) => {
+      const id = nanoid(3);
+      return (
+        <li key={name}>
+          <p className={styles.name}>{name}</p>
+          <p className={styles.name}>{number}</p>
+          <button onClick={() => onDelete({ name })}>Delete</button>
+        </li>
+      );
+    });
 
     return (
       <>
