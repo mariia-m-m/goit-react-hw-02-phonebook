@@ -1,5 +1,6 @@
-import styles from '../components/phoneBook.module.css';
 import { Component } from 'react';
+import PropTypes from 'prop-types';
+import styles from '../components/phoneBook.module.css';
 
 class Form extends Component {
   state = {
@@ -9,15 +10,7 @@ class Form extends Component {
 
   onChange = event => {
     const { name, value } = event.currentTarget;
-    const { contacts } = this.props;
     this.setState({ [name]: value });
-
-    // Забороняє робити дублікат при введенні однакового імені в інпут
-    // contacts.map(({ name }) => {
-    //   if (value === name) {
-    //     return alert(`${name} is already in contacts`);
-    //   }
-    // });
   };
 
   handleSubmit = event => {
@@ -75,3 +68,7 @@ class Form extends Component {
 }
 
 export default Form;
+
+Form.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};

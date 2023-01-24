@@ -1,13 +1,9 @@
+import PropTypes from 'prop-types';
 import styles from '../components/phoneBook.module.css';
-import { nanoid } from 'nanoid';
 
-const Contacts = ({ contacts, filter, onDelete, onFilter }) => {
+const Contacts = ({ onDelete, onFilter }) => {
   const filteredContacts = onFilter();
-  // let filtered = contacts;
-  // if (filter.toLowerCase()) {
-  //   filtered = contacts.filter(contact =>
-  //     contact.name.toLowerCase().includes(filter)
-  //   );
+
   const elements = filteredContacts.map(({ name, number, id }) => {
     return (
       <li key={id}>
@@ -22,3 +18,8 @@ const Contacts = ({ contacts, filter, onDelete, onFilter }) => {
 };
 
 export default Contacts;
+
+Contacts.propTypes = {
+  onDelete: PropTypes.func.isRequired,
+  onFilter: PropTypes.func.isRequired,
+};

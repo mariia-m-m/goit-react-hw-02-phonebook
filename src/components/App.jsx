@@ -1,16 +1,18 @@
-import styles from '../components/phoneBook.module.css';
 import { Component } from 'react';
+import { nanoid } from 'nanoid';
+
 import Form from './Form';
 import Contacts from './Contacts';
-import { nanoid } from 'nanoid';
+import Filter from './Filter';
+import styles from '../components/phoneBook.module.css';
 
 export class App extends Component {
   state = {
     contacts: [
-      { id: nanoid(3), name: 'Rosie Simpson', number: '459-12-56' },
-      { id: nanoid(3), name: 'Hermione Kline', number: '443-89-12' },
-      { id: nanoid(3), name: 'Eden Clements', number: '645-17-79' },
-      { id: nanoid(3), name: 'Annie Copeland', number: '227-91-26' },
+      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
   };
@@ -53,7 +55,6 @@ export class App extends Component {
   };
 
   onDelete = id => {
-    console.log(id);
     this.setState(({ contacts }) => {
       const newContacts = contacts.filter(user => user.id !== id);
       return { contacts: newContacts };
@@ -70,48 +71,21 @@ export class App extends Component {
   };
 
   render() {
+    const isContacts = Boolean(this.state.contacts.length);
     return (
       <div className={styles.section}>
         <h2 className={styles.title}>Phonebook</h2>
-        <Form
-          onSubmit={this.formSubmitHandler}
-          contacts={this.state.contacts}
-        />
-
+        <Form onSubmit={this.formSubmitHandler} />
         <div className={styles.blockContact}>
           <h2 className={styles.title}>Contacts</h2>
-          <>
-            <p className={styles.name}>Find contacts by name</p>
-            <input
-              onChange={this.onChangeFilter}
-              className={styles.input}
-              placeholder="Name of contact"
-              type="text"
-              name="filter"
-              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-              required
-            />
-          </>
-          <Contacts
-            contacts={this.state.contacts}
-            filter={this.state.filter}
-            onFilter={this.onFilter}
-            onDelete={this.onDelete}
-          />
+          <Filter onChangeFilter={this.onChangeFilter} />
+          {isContacts && (
+            <Contacts onFilter={this.onFilter} onDelete={this.onDelete} />
+          )}
+          {!isContacts && <p>There are no contacts in your Phone Book...</p>}
+          <></>
         </div>
       </div>
     );
   }
 }
-
-// App.propTypes = {
-//   friends: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.number.isRequired,
-//       isOnline: PropTypes.bool.isRequired,
-//       avatar: PropTypes.string.isRequired,
-//       name: PropTypes.string.isRequired,
-//     })
-//   ),
-// };
