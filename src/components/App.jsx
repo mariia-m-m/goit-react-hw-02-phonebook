@@ -16,9 +16,15 @@ export class App extends Component {
   };
 
   formSubmitHandler = data => {
+    const { name, number } = data;
+    if (this.isDublicate(name, number)) {
+      return alert(
+        `Dear User, ${name} with number ${number} is already in your contacts!`
+      );
+    }
     this.setState(prevState => {
-      const { contacts } = this.state;
-      const { name, number } = data;
+      const { contacts } = prevState;
+
       const newContact = {
         id: nanoid(3),
         name,
@@ -26,11 +32,22 @@ export class App extends Component {
       };
       return { contacts: [newContact, ...contacts] };
     });
+
+    // Додає в масив новий контакт за допомогою методу concat:
     // var joined = this.state.contacts.concat(data);
     // this.setState({ contacts: joined });
   };
 
-  onChange = event => {
+  onFilter = () => {
+    const { filter, contacts } = this.state;
+    const normalizedFilter = filter.toLowerCase();
+    const result = contacts.filter(({ name }) => {
+      return name.toLowerCase().includes(normalizedFilter);
+    });
+    return result;
+  };
+
+  onChangeFilter = event => {
     const { value } = event.currentTarget;
     this.setState({ filter: value });
   };
@@ -41,6 +58,15 @@ export class App extends Component {
       const newContacts = contacts.filter(user => user.id !== id);
       return { contacts: newContacts };
     });
+  };
+
+  isDublicate = name => {
+    const normalizedName = name.toLowerCase();
+    const { contacts } = this.state;
+    const contact = contacts.find(({ name }) => {
+      return name.toLocaleLowerCase() === normalizedName;
+    });
+    return Boolean(contact);
   };
 
   render() {
@@ -57,8 +83,7 @@ export class App extends Component {
           <>
             <p className={styles.name}>Find contacts by name</p>
             <input
-              value={this.state.value}
-              onChange={this.onChange}
+              onChange={this.onChangeFilter}
               className={styles.input}
               placeholder="Name of contact"
               type="text"
@@ -71,6 +96,7 @@ export class App extends Component {
           <Contacts
             contacts={this.state.contacts}
             filter={this.state.filter}
+            onFilter={this.onFilter}
             onDelete={this.onDelete}
           />
         </div>

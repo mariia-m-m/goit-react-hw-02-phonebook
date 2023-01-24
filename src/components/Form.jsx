@@ -11,11 +11,13 @@ class Form extends Component {
     const { name, value } = event.currentTarget;
     const { contacts } = this.props;
     this.setState({ [name]: value });
-    contacts.map(({ name }) => {
-      if (value === name) {
-        return alert(`${name} is already in contacts`);
-      }
-    });
+
+    // Забороняє робити дублікат при введенні однакового імені в інпут
+    // contacts.map(({ name }) => {
+    //   if (value === name) {
+    //     return alert(`${name} is already in contacts`);
+    //   }
+    // });
   };
 
   handleSubmit = event => {
