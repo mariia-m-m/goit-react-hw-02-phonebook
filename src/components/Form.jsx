@@ -13,7 +13,7 @@ class Form extends Component {
     this.setState({ [name]: value });
     contacts.map(({ name }) => {
       if (value === name) {
-        alert(`${name} is already in contacts`);
+        return alert(`${name} is already in contacts`);
       }
     });
   };

@@ -9,19 +9,15 @@ const Contacts = ({ contacts, filter, onDelete }) => {
     );
     const elements = filtered.map(({ name, number, id }) => {
       return (
-        <li key={nanoid(3)}>
+        <li key={id}>
           <p className={styles.name}>{name}</p>
           <p className={styles.name}>{number}</p>
-          <button onClick={() => onDelete({ id })}>Delete</button>
+          <button onClick={() => onDelete(id)}>Delete</button>
         </li>
       );
     });
 
-    return (
-      <>
-        <ul>{elements}</ul>
-      </>
-    );
+    return <ol>{elements}</ol>;
   }
 };
 export default Contacts;

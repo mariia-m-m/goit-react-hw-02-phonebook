@@ -16,8 +16,18 @@ export class App extends Component {
   };
 
   formSubmitHandler = data => {
-    var joined = this.state.contacts.concat(data);
-    this.setState({ contacts: joined });
+    this.setState(prevState => {
+      const { contacts } = this.state;
+      const { name, number } = data;
+      const newContact = {
+        id: nanoid(3),
+        name,
+        number,
+      };
+      return { contacts: [newContact, ...contacts] };
+    });
+    // var joined = this.state.contacts.concat(data);
+    // this.setState({ contacts: joined });
   };
 
   onChange = event => {
@@ -26,9 +36,11 @@ export class App extends Component {
   };
 
   onDelete = id => {
-    this.setState(({ contacts }) => ({
-      contacts: contacts.filter(user => user.id !== id),
-    }));
+    console.log(id);
+    this.setState(({ contacts }) => {
+      const newContacts = contacts.filter(user => user.id !== id);
+      return { contacts: newContacts };
+    });
   };
 
   render() {
